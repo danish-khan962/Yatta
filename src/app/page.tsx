@@ -1,14 +1,17 @@
+'use client'
+import React, { useState } from 'react'
 import Hero from '@/components/Hero'
 import Posts from '@/components/Posts'
-import React from 'react'
 
-const page = () => {
+const Page = () => {
+  const [searchQuery, setSearchQuery] = useState('')
+
   return (
     <div>
-      <Hero />
-      <Posts />
+      <Hero onSearch={(query) => setSearchQuery(query)} />
+      <Posts searchQuery={searchQuery} />
     </div>
   )
 }
 
-export default page
+export default Page
