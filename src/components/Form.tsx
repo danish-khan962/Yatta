@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Space_Mono } from 'next/font/google';
 import { FaUpload } from 'react-icons/fa6';
 import dynamic from 'next/dynamic'
+import { FileUpload } from './ui/file-upload';
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false });
 
 const spaceMono = Space_Mono({
@@ -15,7 +16,6 @@ const Form = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
   const [details, setDetails] = useState('');
 
   const UploadPost = (event: React.FormEvent<HTMLFormElement>) => {
@@ -72,16 +72,7 @@ const Form = () => {
 
       {/* Image URL */}
       <div className='flex flex-col gap-y-2 md:gap-y-5 lg:gap-y-7 mt-[30px] md:mt-[60px]'>
-        <label className={`${spaceMono.className} text-sm md:text-xl lg:text-2xl`}>
-          Image URL
-        </label>
-        <input
-          type='text'
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-          className='w-full bg-[#090808] rounded-2xl py-2 px-4 md:px-8 placeholder:text-gray-500/60 max-sm:text-xs'
-          placeholder='Paste Image URL...'
-        />
+       <FileUpload />
       </div>
 
       {/* Markdown Editor */}

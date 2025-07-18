@@ -23,6 +23,11 @@ const nextConfig: NextConfig = {
         hostname: 'img.freepik.com',
         pathname: '**',
       },
+      { // Add this new pattern for Sanity.io
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        pathname: '**', // Allows any path on the Sanity CDN domain
+      },
     ],
   },
 };
